@@ -1,0 +1,45 @@
+FROM ubuntu:latest
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PATH=/opt/conda/bin:$PATH
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    wget \
+    curl \
+    ca-certificates \
+    bzip2 \
+    libglib2.0-0 \
+    libxext6 \
+    libsm6 \
+    libxrender1 \
+    vim \
+    git \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh && \
+    /bin/bash /tmp/miniconda.sh -b -p /opt/conda && \
+    rm /tmp/miniconda.sh && \
+    /opt/conda/bin/conda clean --all -y
+
+
+RUN conda create -n cspace python=3.9.20 && conda clean --all -y
+
+RUN echo "source activate cspace" >> ~/.bashrc && echo "source activate cspace" >> ~/.bash_profile
+ENV PATH="/opt/conda/envs/cspace/bin:$PATH"
+
+RUN conda install anaconda::jupyter && conda update jupyter
+RUN pip install --upgrade 'nbconvert>=7' 'mistune>=2'
+RUN conda install conda-forge::jupyterlab
+RUN conda install anaconda::pandas
+RUN pip install --upgrade pip
+RUN pip install scipy
+RUN pip install 'rdkit==2024.3.5'
+RUN pip install 'mhfp==1.9.6'
+RUN pip install 'faerun==0.4.7'
+RUN pip install 'ipykernel'
+RUN pip install 'tmap-viz==1.0.16'
+RUN python -m ipykernel install --name cspace
+CMD python -c "import tmap; from faerun import Faerun ; from mhfp.encoder import MHFPEncoder ; from rdkit import Chem"

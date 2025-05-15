@@ -1,0 +1,2437 @@
+<!doctype html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
+
+  <title>redxregressors.datasets API documentation</title>
+  <meta name="description" content="Module for classes and methods to store and data sets" />
+
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
+
+  <style type="text/css">
+* {
+  box-sizing: border-box;
+}
+/*! normalize.css v1.1.1 | MIT License | git.io/normalize */
+
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+audio,
+canvas,
+video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Firefox 3, and Safari 4.
+ * Known issue: no IE 6 support.
+ */
+
+[hidden] {
+    display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+/**
+ * 1. Prevent system color scheme's background color being used in Firefox, IE,
+ *    and Opera.
+ * 2. Prevent system color scheme's text color being used in Firefox, IE, and
+ *    Opera.
+ * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ * 4. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+    background: #fff; /* 1 */
+    color: #000; /* 2 */
+    font-size: 100%; /* 3 */
+    -webkit-text-size-adjust: 100%; /* 4 */
+    -ms-text-size-adjust: 100%; /* 4 */
+}
+
+/**
+ * Address `font-family` inconsistency between `textarea` and other form
+ * elements.
+ */
+
+html,
+button,
+input,
+select,
+textarea {
+    font-family: sans-serif;
+}
+
+/**
+ * Address margins handled incorrectly in IE 6/7.
+ */
+
+body {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+
+a:focus {
+    outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/**
+ * Address font sizes and margins set differently in IE 6/7.
+ * Address font sizes within `section` and `article` in Firefox 4+, Safari 5,
+ * and Chrome.
+ */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+}
+
+h6 {
+    font-size: 0.67em;
+    margin: 2.33em 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Safari 5, and Chrome.
+ */
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 3+, Safari 4/5, and Chrome.
+ */
+
+b,
+strong {
+    font-weight: bold;
+}
+
+blockquote {
+    margin: 1em 40px;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ * Known issue: no IE 6/7 normalization.
+ */
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 6/7/8/9.
+ */
+
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+p,
+pre {
+    margin: 1em 0;
+}
+
+/**
+ * Correct font family set oddly in IE 6, Safari 4/5, and Chrome.
+ */
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    _font-family: 'courier new', monospace;
+    font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/**
+ * Address CSS quotes not supported in IE 6/7.
+ */
+
+q {
+    quotes: none;
+}
+
+/**
+ * Address `quotes` property not supported in Safari 4.
+ */
+
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+dl,
+menu,
+ol,
+ul {
+    margin: 1em 0;
+}
+
+dd {
+    margin: 0 0 0 40px;
+}
+
+/**
+ * Address paddings set differently in IE 6/7.
+ */
+
+menu,
+ol,
+ul {
+    padding: 0 0 0 40px;
+}
+
+/**
+ * Correct list images handled incorrectly in IE 7.
+ */
+
+nav ul,
+nav ol {
+    list-style: none;
+    list-style-image: none;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+
+/**
+ * 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
+ * 2. Improve image quality when scaled in IE 7.
+ */
+
+img {
+    border: 0; /* 1 */
+    -ms-interpolation-mode: bicubic; /* 2 */
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11.
+ */
+
+figure {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+/**
+ * Correct margin displayed oddly in IE 6/7.
+ */
+
+form {
+    margin: 0;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct color not being inherited in IE 6/7/8/9.
+ * 2. Correct text not wrapping in Firefox 3.
+ * 3. Correct alignment displayed oddly in IE 6/7.
+ */
+
+legend {
+    border: 0; /* 1 */
+    padding: 0;
+    white-space: normal; /* 2 */
+    *margin-left: -7px; /* 3 */
+}
+
+/**
+ * 1. Correct font size not being inherited in all browsers.
+ * 2. Address margins set differently in IE 6/7, Firefox 3+, Safari 5,
+ *    and Chrome.
+ * 3. Improve appearance and consistency in all browsers.
+ */
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%; /* 1 */
+    margin: 0; /* 2 */
+    vertical-align: baseline; /* 3 */
+    *vertical-align: middle; /* 3 */
+}
+
+/**
+ * Address Firefox 3+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+button,
+input {
+    line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+
+button,
+select {
+    text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+ *    Known issue: inner spacing remains in IE 6.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+    *overflow: visible;  /* 4 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to content-box in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ * 3. Remove excess padding in IE 7.
+ *    Known issue: excess padding remains in IE 6.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+    *height: 13px; /* 3 */
+    *width: 13px; /* 3 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /* 2 */
+    box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 3+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 6/7/8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+</style>
+  <style type="text/css">
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+  }
+  body {
+    background: #fff;
+    font-family: "Source Sans Pro", "Helvetica Neueue", Helvetica, sans;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6em;
+  }
+  #content {
+    width: 70%;
+    max-width: 850px;
+    float: left;
+    padding: 30px 60px;
+    border-left: 1px solid #ddd;
+  }
+  #sidebar {
+    width: 25%;
+    float: left;
+    padding: 30px;
+    overflow: hidden;
+  }
+  #nav {
+    font-size: 130%;
+    margin: 0 0 15px 0;
+  }
+
+  #top {
+    display: block;
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    font-size: .85em;
+    text-transform: uppercase;
+  }
+
+  #footer {
+    font-size: .75em;
+    padding: 5px 30px;
+    border-top: 1px solid #ddd;
+    text-align: right;
+  }
+    #footer p {
+      margin: 0 0 0 30px;
+      display: inline-block;
+    }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: 300;
+  }
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.1em;
+    margin: 0 0 .50em 0;
+  }
+
+  h2 {
+    font-size: 1.75em;
+    margin: 1em 0 .50em 0;
+  }
+
+  h3 {
+    margin: 25px 0 10px 0;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 105%;
+  }
+
+  a {
+    color: #058;
+    text-decoration: none;
+    transition: color .3s ease-in-out;
+  }
+
+  a:hover {
+    color: #e08524;
+    transition: color .3s ease-in-out;
+  }
+
+  pre, code, .mono, .name {
+    font-family: "Ubuntu Mono", "Cousine", "DejaVu Sans Mono", monospace;
+  }
+
+  .title .name {
+    font-weight: bold;
+  }
+  .section-title {
+    margin-top: 2em;
+  }
+  .ident {
+    color: #900;
+  }
+
+  code {
+    background: #f9f9f9;
+  }
+
+  pre {
+    background: #fefefe;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 0 #f3f3f3;
+    margin: 0 30px;
+    padding: 15px 30px;
+  }
+
+  .codehilite {
+    margin: 0 30px 10px 30px;
+  }
+
+    .codehilite pre {
+      margin: 0;
+    }
+    .codehilite .err { background: #ff3300; color: #fff !important; }
+
+  table#module-list {
+    font-size: 110%;
+  }
+
+    table#module-list tr td:first-child {
+      padding-right: 10px;
+      white-space: nowrap;
+    }
+
+    table#module-list td {
+      vertical-align: top;
+      padding-bottom: 8px;
+    }
+
+      table#module-list td p {
+        margin: 0 0 7px 0;
+      }
+
+  .def {
+    display: table;
+  }
+
+    .def p {
+      display: table-cell;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .def p:first-child {
+      white-space: nowrap;
+    }
+
+    .def p:last-child {
+      width: 100%;
+    }
+
+
+  #index {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+    ul#index .class_name {
+      /* font-size: 110%; */
+      font-weight: bold;
+    }
+    #index ul {
+      margin: 0;
+    }
+
+  .item {
+    margin: 0 0 15px 0;
+  }
+
+    .item .class {
+      margin: 0 0 25px 30px;
+    }
+
+      .item .class ul.class_list {
+        margin: 0 0 20px 0;
+      }
+
+    .item .name {
+      background: #fafafa;
+      margin: 0;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 3px;
+      display: inline-block;
+      min-width: 40%;
+    }
+      .item .name:hover {
+        background: #f6f6f6;
+      }
+
+    .item .empty_desc {
+      margin: 0 0 5px 0;
+      padding: 0;
+    }
+
+    .item .inheritance {
+      margin: 3px 0 0 30px;
+    }
+
+    .item .inherited {
+      color: #666;
+    }
+
+    .item .desc {
+      padding: 0 8px;
+      margin: 0;
+    }
+
+      .item .desc p {
+        margin: 0 0 10px 0;
+      }
+
+    .source_cont {
+      margin: 0;
+      padding: 0;
+    }
+
+    .source_link a {
+      background: #ffc300;
+      font-weight: 400;
+      font-size: .75em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 1px 1px 0 #f4b700;
+
+      padding: 3px 8px;
+      border-radius: 2px;
+      transition: background .3s ease-in-out;
+    }
+      .source_link a:hover {
+        background: #FF7200;
+        text-shadow: none;
+        transition: background .3s ease-in-out;
+      }
+
+    .source {
+      display: none;
+      max-height: 600px;
+      overflow-y: scroll;
+      margin-bottom: 15px;
+    }
+
+      .source .codehilite {
+        margin: 0;
+      }
+
+  .desc h1, .desc h2, .desc h3 {
+    font-size: 100% !important;
+  }
+  .clear {
+    clear: both;
+  }
+
+  @media all and (max-width: 950px) {
+    #sidebar {
+      width: 35%;
+    }
+    #content {
+      width: 65%;
+    }
+  }
+  @media all and (max-width: 650px) {
+    #top {
+      display: none;
+    }
+    #sidebar {
+      float: none;
+      width: auto;
+    }
+    #content {
+      float: none;
+      width: auto;
+      padding: 30px;
+    }
+
+    #index ul {
+      padding: 0;
+      margin-bottom: 15px;
+    }
+    #index ul li {
+      display: inline-block;
+      margin-right: 30px;
+    }
+    #footer {
+      text-align: left;
+    }
+    #footer p {
+      display: block;
+      margin: inherit;
+    }
+  }
+
+  /*****************************/
+</style>
+  <style type="text/css">
+  pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #f8f8f8; }
+.codehilite .c { color: #3D7B7B; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #F00 } /* Error */
+.codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666 } /* Operator */
+.codehilite .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #9C6500 } /* Comment.Preproc */
+.codehilite .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #E40000 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #008400 } /* Generic.Inserted */
+.codehilite .go { color: #717171 } /* Generic.Output */
+.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #04D } /* Generic.Traceback */
+.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #B00040 } /* Keyword.Type */
+.codehilite .m { color: #666 } /* Literal.Number */
+.codehilite .s { color: #BA2121 } /* Literal.String */
+.codehilite .na { color: #687822 } /* Name.Attribute */
+.codehilite .nb { color: #008000 } /* Name.Builtin */
+.codehilite .nc { color: #00F; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #800 } /* Name.Constant */
+.codehilite .nd { color: #A2F } /* Name.Decorator */
+.codehilite .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #00F } /* Name.Function */
+.codehilite .nl { color: #767600 } /* Name.Label */
+.codehilite .nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #19177C } /* Name.Variable */
+.codehilite .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #BBB } /* Text.Whitespace */
+.codehilite .mb { color: #666 } /* Literal.Number.Bin */
+.codehilite .mf { color: #666 } /* Literal.Number.Float */
+.codehilite .mh { color: #666 } /* Literal.Number.Hex */
+.codehilite .mi { color: #666 } /* Literal.Number.Integer */
+.codehilite .mo { color: #666 } /* Literal.Number.Oct */
+.codehilite .sa { color: #BA2121 } /* Literal.String.Affix */
+.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+.codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+.codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+.codehilite .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.codehilite .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.codehilite .sx { color: #008000 } /* Literal.String.Other */
+.codehilite .sr { color: #A45A77 } /* Literal.String.Regex */
+.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+.codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #00F } /* Name.Function.Magic */
+.codehilite .vc { color: #19177C } /* Name.Variable.Class */
+.codehilite .vg { color: #19177C } /* Name.Variable.Global */
+.codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+.codehilite .vm { color: #19177C } /* Name.Variable.Magic */
+.codehilite .il { color: #666 } /* Literal.Number.Integer.Long */
+  </style>
+  <style type="text/css">
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+</style>
+
+  <script type="text/javascript">
+  function toggle(id, $link) {
+    $node = document.getElementById(id);
+    if (!$node)
+    return;
+    if (!$node.style.display || $node.style.display == 'none') {
+    $node.style.display = 'block';
+    $link.innerHTML = 'Hide source &nequiv;';
+    } else {
+    $node.style.display = 'none';
+    $link.innerHTML = 'Show source &equiv;';
+    }
+  }
+  </script>
+</head>
+<body>
+<a href="#" id="top">Top</a>
+<div id="container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="sidebar">
+    <h1>Index</h1>
+    <ul id="index">
+    <li class="set"><h3>Super-module</h3>
+      <ul>
+        <li class="mono"><a href="index.html">redxregressors</a></li>
+      </ul>
+    </li>
+    <li class="set"><h3><a href="#header-variables">Module variables</a></h3>
+
+  <ul>
+    <li class="mono"><a href="#redxregressors.datasets.log">log</a></li>
+  </ul>
+
+    </li>
+
+    <li class="set"><h3><a href="#header-functions">Functions</a></h3>
+
+  <ul>
+    <li class="mono"><a href="#redxregressors.datasets.split_redx_csv_data_set_into_train_test_validation">split_redx_csv_data_set_into_train_test_validation</a></li>
+  </ul>
+
+    </li>
+
+    <li class="set"><h3><a href="#header-classes">Classes</a></h3>
+      <ul>
+        <li class="mono">
+        <span class="class_name"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet">RedxCSVGraphMolDataSet</a></span>
+
+
+  <ul>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.collate">collate</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.save">save</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.copy">copy</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.cpu">cpu</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.cuda">cuda</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.download">download</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.get">get</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.get_summary">get_summary</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.index_select">index_select</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.indices">indices</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.len">len</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.load">load</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.print_summary">print_summary</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.process">process</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.shuffle">shuffle</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.to">to</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.to_datapipe">to_datapipe</a></li>
+    <li class="mono"><a href="#redxregressors.datasets.RedxCSVGraphMolDataSet.to_on_disk_dataset">to_on_disk_dataset</a></li>
+  </ul>
+
+        </li>
+      </ul>
+    </li>
+
+    </ul>
+  </div>
+
+<article id="content">
+
+
+
+
+
+  <header id="section-intro">
+  <h1 class="title"><span class="name">redxregressors.datasets</span> module</h1>
+  <p>Module for classes and methods to store and data sets</p>
+
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets" class="source">
+    <div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module for classes and methods to store and data sets</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch_geometric.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">InMemoryDataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch_geometric.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">from_smiles</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch_geometric.loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Callable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">redxregressors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ml_featurization</span><span class="p">,</span> <span class="n">utilities</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RedxCSVGraphMolDataSet</span><span class="p">(</span><span class="n">InMemoryDataset</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class is intended to read in a CSV file containing SMILES strings and labels/target values and</span>
+<span class="sd">    convert them into a PyTorch Geometric dataset. This is useful for training graph neural networks on</span>
+<span class="sd">    molecular data.</span>
+
+<span class="sd">    The class is based on the PyTorch Geometric InMemoryDataset class and so inherits all of its methods. The</span>
+<span class="sd">    pytorch geometric MoleculeNet dataset is used as a template for this class. The pytorch geometric code</span>
+<span class="sd">    is licensed under the MIT license which is given below.</span>
+<span class="sd">    Copyright (c) 2023 PyG Team &lt;team@pyg.org&gt;</span>
+
+<span class="sd">    Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="sd">    of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="sd">    in the Software without restriction, including without limitation the rights</span>
+<span class="sd">    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="sd">    copies of the Software, and to permit persons to whom the Software is</span>
+<span class="sd">    furnished to do so, subject to the following conditions:</span>
+
+<span class="sd">    The above copyright notice and this permission notice shall be included in</span>
+<span class="sd">    all copies or substantial portions of the Software.</span>
+
+<span class="sd">    THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="sd">    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="sd">    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="sd">    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="sd">    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="sd">    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span>
+<span class="sd">    THE SOFTWARE.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">csv_file</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
+        <span class="n">smiles_column</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">property_columns</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">id_column</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">save_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span>
+        <span class="n">save_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">pre_transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_smiles</span><span class="p">,</span>
+        <span class="n">overwrite_existing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the class and read in the data from the CSV file and convert it to PyTorch Geometric Data objects.</span>
+<span class="sd">        Note this is only valid for single objectives.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            root (string): Root directory where the dataset should be saved.</span>
+<span class="sd">            save_path (string): Root directory where the dataset should be saved.</span>
+<span class="sd">            csv_file (string): The name of the CSV file containing the data.</span>
+<span class="sd">            smiles_column (string): The name of the column in the CSV file containing the SMILES strings.</span>
+<span class="sd">            label_column (string): The name of the column in the CSV</span>
+<span class="sd">            file containing the target values.</span>
+<span class="sd">            transform (callable, optional): A function/transform that takes in an torch_geometric.data.Data object and returns a transformed version.</span>
+<span class="sd">            The data object will be transformed before every access. (default: None)</span>
+<span class="sd">            pre_transform (callable, optional): A function/transform that takes in an torch_geometric.data.Data object and returns a transformed version.</span>
+<span class="sd">            The data object will be transformed before being saved to disk. (default: None)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># store column headers that are needed and make sure the property columns is a list and if not convert it to a list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span> <span class="o">=</span> <span class="n">csv_file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">smiles_column</span> <span class="o">=</span> <span class="n">smiles_column</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">property_columns</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">property_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">property_columns</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">property_columns</span> <span class="o">=</span> <span class="n">property_columns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id_column</span> <span class="o">=</span> <span class="n">id_column</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_name</span> <span class="o">=</span> <span class="n">save_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">save_path</span><span class="p">)</span>
+
+        <span class="c1"># call the parent class constructor which will run process() to convert the data to PyTorch Geometric Data objects and save them to disk</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RedxCSVGraphMolDataSet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">save_path</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">pre_transform</span><span class="p">,</span> <span class="n">force_reload</span><span class="o">=</span><span class="n">overwrite_existing</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Load the saved graph data from disk and store it in the class as an in memory data set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">processed_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">raw_file_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function to return the raw file names</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">processed_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function to return the processed directory path. Note that &#39;processed&#39; is made in the call to process() if it does not exist</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;processed&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">processed_file_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function to return the processed file names</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;graph_data.pt&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function inherited from the base Dataset class to process the data and save it to disk for each graph entry</span>
+<span class="sd">        In this case the function reads in the CSV file and converts the SMILES strings to PyTorch Geometric Data objects</span>
+<span class="sd">        using the default from_smiles function. The target values are also added to the data object as a tensor. We</span>
+<span class="sd">        can then use the pre_transform function to apply any transformations to the data object before saving it to disk. In the</span>
+<span class="sd">        present example this is used to extract the smiles from the default data object gotten from the from_smiles function and</span>
+<span class="sd">        passes these to the new featurization function for the AttentiveFP model. The data object is then saved to disk.</span>
+
+<span class="sd">        Note that providing no pre_transform function will result in the default data object being saved to disk and to get a modified</span>
+<span class="sd">        graph data object for each molecule we can provide a pre_transform function that modifies the data object before saving it to disk.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># check if we have a single csv file to load from disk or a list of csv files to load and concatenate</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;csv_file must be a string, pandas dataframe or a list of strings&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># drop any rows with missing values in the SMILES or target columns</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">smiles_column</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">property_columns</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># get the SMILES strings and target values from the data</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data columns are as follows: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">smiles</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">smiles_column</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">property_columns</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span>
+        <span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Properties targets are as follows: </span><span class="si">{</span><span class="n">properties</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># get the IDs if they are present in the data</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">id_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ids</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">id_column</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ids</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+        <span class="c1"># create a list to store the data objects</span>
+        <span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># loop over the SMILES strings and target values and create a PyTorch Geometric Data object for each</span>
+        <span class="k">for</span> <span class="n">ith</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">smiles</span><span class="p">))):</span>
+            <span class="c1"># validate the SMILES string</span>
+            <span class="n">smi</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">validate_smile</span><span class="p">(</span><span class="n">smiles</span><span class="p">[</span><span class="n">ith</span><span class="p">])</span>
+
+            <span class="c1"># create the PyTorch Geometric Data object</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">ml_featurization</span><span class="o">.</span><span class="n">from_smiles_without_default_graph_feature_gen</span><span class="p">(</span>
+                <span class="n">smi</span>
+            <span class="p">)</span>  <span class="c1"># avoid needless default featurization from_smiles(smi). We use from_smiles() as the defualt pre_transform.</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">properties</span><span class="p">[:,</span> <span class="n">ith</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+
+            <span class="c1"># check if the data object is empty and skip if it is</span>
+            <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">num_edges</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">data</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Skipping molecule </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ids</span><span class="p">[</span><span class="n">ith</span><span class="p">]</span><span class="si">}</span><span class="s2"> graph featureization failed&quot;</span>
+                <span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input smiles: &#39;</span><span class="si">{</span><span class="n">smiles</span><span class="p">[</span><span class="n">ith</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; validated smiles &#39;</span><span class="si">{</span><span class="n">smi</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># apply the pre_transform function to the data object if we want graph featurization that is different from the pytorch geometric default for smiles</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+            <span class="c1"># append the data object to the list</span>
+            <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># save the data objects to disk</span>
+        <span class="n">processed_dir_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">processed_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">processed_dir</span><span class="p">):</span>
+            <span class="n">processed_dir_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">data_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">processed_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">split_redx_csv_data_set_into_train_test_validation</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">train_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">test_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">DataLoader</span><span class="p">,</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">DataLoader</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to split a PyTorch Geometric dataset into training, test, and validation sets. The function uses the DataLoader class</span>
+<span class="sd">    from PyTorch to create the data loaders for each set. The function also ensures that the train, test, and validation sets do not</span>
+<span class="sd">    have overlapping indices.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        data (Dataset): The PyTorch Geometric dataset to split.</span>
+<span class="sd">        train_frac (float): The fraction of the data to use for the training set.</span>
+<span class="sd">        test_frac (float): The fraction of the data to use for the test set.</span>
+<span class="sd">        batch_size (int): The batch size to use for the data loaders.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple[DataLoader, DataLoader, DataLoader]: The training, test, and validation data loaders.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n_train</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="n">train_frac</span><span class="p">)</span>
+    <span class="n">n_test</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="n">test_frac</span><span class="p">)</span>
+    <span class="n">indexes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ith</span> <span class="k">for</span> <span class="n">ith</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))]</span>
+    <span class="n">train_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">indexes</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_train</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">indexes</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">train_indices</span><span class="p">)))</span>
+    <span class="n">test_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">test_indices</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_test</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">validation_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">indexes</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">train_indices</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">test_indices</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">ent</span> <span class="ow">in</span> <span class="n">train_indices</span> <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">test_indices</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ERROR - The train and test sets have overlapping indices&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">ent</span> <span class="ow">in</span> <span class="n">train_indices</span> <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">validation_indices</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+            <span class="s2">&quot;ERROR - The train and validation sets have overlapping indices&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">train</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">ith</span><span class="p">]</span> <span class="k">for</span> <span class="n">ith</span> <span class="ow">in</span> <span class="n">train_indices</span><span class="p">],</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">worker_init_fn</span><span class="o">=</span><span class="n">utilities</span><span class="o">.</span><span class="n">seed_worker</span><span class="p">,</span>
+        <span class="n">generator</span><span class="o">=</span><span class="n">g</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">ith</span><span class="p">]</span> <span class="k">for</span> <span class="n">ith</span> <span class="ow">in</span> <span class="n">test_indices</span><span class="p">],</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">worker_init_fn</span><span class="o">=</span><span class="n">utilities</span><span class="o">.</span><span class="n">seed_worker</span><span class="p">,</span>
+        <span class="n">generator</span><span class="o">=</span><span class="n">g</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">validation</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">ith</span><span class="p">]</span> <span class="k">for</span> <span class="n">ith</span> <span class="ow">in</span> <span class="n">validation_indices</span><span class="p">],</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">worker_init_fn</span><span class="o">=</span><span class="n">utilities</span><span class="o">.</span><span class="n">seed_worker</span><span class="p">,</span>
+        <span class="n">generator</span><span class="o">=</span><span class="n">g</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">validation</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">doctest</span>
+
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+
+  </header>
+
+  <section id="section-items">
+    <h2 class="section-title" id="header-variables">Module variables</h2>
+      <div class="item">
+      <p id="redxregressors.datasets.log" class="name">var <span class="ident">log</span></p>
+
+
+  <div class="source_cont">
+</div>
+
+      </div>
+
+    <h2 class="section-title" id="header-functions">Functions</h2>
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.split_redx_csv_data_set_into_train_test_validation">
+    <p>def <span class="ident">split_redx_csv_data_set_into_train_test_validation</span>(</p><p>data, train_frac: float = 0.8, test_frac: float = 0.1, batch_size: int = 1)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Function to split a PyTorch Geometric dataset into training, test, and validation sets. The function uses the DataLoader class
+from PyTorch to create the data loaders for each set. The function also ensures that the train, test, and validation sets do not
+have overlapping indices.
+Args:
+    data (Dataset): The PyTorch Geometric dataset to split.
+    train_frac (float): The fraction of the data to use for the training set.
+    test_frac (float): The fraction of the data to use for the test set.
+    batch_size (int): The batch size to use for the data loaders.
+Returns:
+    tuple[DataLoader, DataLoader, DataLoader]: The training, test, and validation data loaders.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.split_redx_csv_data_set_into_train_test_validation', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.split_redx_csv_data_set_into_train_test_validation" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">split_redx_csv_data_set_into_train_test_validation</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">train_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">test_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">DataLoader</span><span class="p">,</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">DataLoader</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to split a PyTorch Geometric dataset into training, test, and validation sets. The function uses the DataLoader class</span>
+<span class="sd">    from PyTorch to create the data loaders for each set. The function also ensures that the train, test, and validation sets do not</span>
+<span class="sd">    have overlapping indices.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        data (Dataset): The PyTorch Geometric dataset to split.</span>
+<span class="sd">        train_frac (float): The fraction of the data to use for the training set.</span>
+<span class="sd">        test_frac (float): The fraction of the data to use for the test set.</span>
+<span class="sd">        batch_size (int): The batch size to use for the data loaders.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple[DataLoader, DataLoader, DataLoader]: The training, test, and validation data loaders.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n_train</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="n">train_frac</span><span class="p">)</span>
+    <span class="n">n_test</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="n">test_frac</span><span class="p">)</span>
+    <span class="n">indexes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ith</span> <span class="k">for</span> <span class="n">ith</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))]</span>
+    <span class="n">train_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">indexes</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_train</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">indexes</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">train_indices</span><span class="p">)))</span>
+    <span class="n">test_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">test_indices</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_test</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">validation_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">indexes</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">train_indices</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">test_indices</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">ent</span> <span class="ow">in</span> <span class="n">train_indices</span> <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">test_indices</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ERROR - The train and test sets have overlapping indices&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">ent</span> <span class="ow">in</span> <span class="n">train_indices</span> <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">validation_indices</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+            <span class="s2">&quot;ERROR - The train and validation sets have overlapping indices&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">train</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">ith</span><span class="p">]</span> <span class="k">for</span> <span class="n">ith</span> <span class="ow">in</span> <span class="n">train_indices</span><span class="p">],</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">worker_init_fn</span><span class="o">=</span><span class="n">utilities</span><span class="o">.</span><span class="n">seed_worker</span><span class="p">,</span>
+        <span class="n">generator</span><span class="o">=</span><span class="n">g</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">ith</span><span class="p">]</span> <span class="k">for</span> <span class="n">ith</span> <span class="ow">in</span> <span class="n">test_indices</span><span class="p">],</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">worker_init_fn</span><span class="o">=</span><span class="n">utilities</span><span class="o">.</span><span class="n">seed_worker</span><span class="p">,</span>
+        <span class="n">generator</span><span class="o">=</span><span class="n">g</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">validation</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">ith</span><span class="p">]</span> <span class="k">for</span> <span class="n">ith</span> <span class="ow">in</span> <span class="n">validation_indices</span><span class="p">],</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">worker_init_fn</span><span class="o">=</span><span class="n">utilities</span><span class="o">.</span><span class="n">seed_worker</span><span class="p">,</span>
+        <span class="n">generator</span><span class="o">=</span><span class="n">g</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">validation</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+    <h2 class="section-title" id="header-classes">Classes</h2>
+
+      <div class="item">
+      <p id="redxregressors.datasets.RedxCSVGraphMolDataSet" class="name">class <span class="ident">RedxCSVGraphMolDataSet</span></p>
+
+
+    <div class="desc"><p>This class is intended to read in a CSV file containing SMILES strings and labels/target values and
+convert them into a PyTorch Geometric dataset. This is useful for training graph neural networks on
+molecular data.</p>
+<p>The class is based on the PyTorch Geometric InMemoryDataset class and so inherits all of its methods. The
+pytorch geometric MoleculeNet dataset is used as a template for this class. The pytorch geometric code
+is licensed under the MIT license which is given below.
+Copyright (c) 2023 PyG Team <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#116;&#101;&#97;&#109;&#64;&#112;&#121;&#103;&#46;&#111;&#114;&#103;">&#116;&#101;&#97;&#109;&#64;&#112;&#121;&#103;&#46;&#111;&#114;&#103;</a></p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p></div>
+  <div class="source_cont">
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="/torch_geometric.data.in_memory_dataset.InMemoryDataset.ext">torch_geometric.data.in_memory_dataset.InMemoryDataset</a></li>
+          <li><a href="/torch_geometric.data.dataset.Dataset.ext">torch_geometric.data.dataset.Dataset</a></li>
+          <li><a href="/torch.utils.data.dataset.Dataset.ext">torch.utils.data.dataset.Dataset</a></li>
+          <li><a href="/typing.Generic.ext">typing.Generic</a></li>
+          </ul>
+          <h3>Static methods</h3>
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.collate">
+    <p>def <span class="ident">collate</span>(</p><p>data_list: Sequence[torch_geometric.data.data.BaseData])</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Collates a list of :class:<code>~torch_geometric.data.Data</code> or
+:class:<code>~torch_geometric.data.HeteroData</code> objects to the internal
+storage format of :class:<code>~torch_geometric.data.InMemoryDataset</code>.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.collate', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.collate" class="source">
+    <div class="codehilite"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">collate</span><span class="p">(</span>
+    <span class="n">data_list</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseData</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">BaseData</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]]]:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Collates a list of :class:`~torch_geometric.data.Data` or</span>
+<span class="sd">    :class:`~torch_geometric.data.HeteroData` objects to the internal</span>
+<span class="sd">    storage format of :class:`~torch_geometric.data.InMemoryDataset`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">None</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">slices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">collate</span><span class="p">(</span>
+        <span class="n">data_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span>
+        <span class="n">data_list</span><span class="o">=</span><span class="n">data_list</span><span class="p">,</span>
+        <span class="n">increment</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">add_batch</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">slices</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.save">
+    <p>def <span class="ident">save</span>(</p><p>data_list: Sequence[torch_geometric.data.data.BaseData], path: str)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Saves a list of data objects to the file path :obj:<code>path</code>.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.save', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.save" class="source">
+    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data_list</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseData</span><span class="p">],</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Saves a list of data objects to the file path :obj:`path`.&quot;&quot;&quot;</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">slices</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">collate</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
+    <span class="n">fs</span><span class="o">.</span><span class="n">torch_save</span><span class="p">((</span><span class="n">data</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span> <span class="n">slices</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="vm">__class__</span><span class="p">),</span> <span class="n">path</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+          <h3>Instance variables</h3>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.data" class="name">var <span class="ident">data</span></p>
+
+
+
+
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.has_download" class="name">var <span class="ident">has_download</span></p>
+
+
+
+
+    <div class="desc"><p>Checks whether the dataset defines a :meth:<code>download</code> method.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.has_process" class="name">var <span class="ident">has_process</span></p>
+
+
+
+
+    <div class="desc"><p>Checks whether the dataset defines a :meth:<code>process</code> method.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.num_classes" class="name">var <span class="ident">num_classes</span></p>
+
+
+
+
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.num_edge_features" class="name">var <span class="ident">num_edge_features</span></p>
+
+
+
+
+    <div class="desc"><p>Returns the number of features per edge in the dataset.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.num_features" class="name">var <span class="ident">num_features</span></p>
+
+
+
+
+    <div class="desc"><p>Returns the number of features per node in the dataset.
+Alias for :py:attr:<code>~num_node_features</code>.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.num_node_features" class="name">var <span class="ident">num_node_features</span></p>
+
+
+
+
+    <div class="desc"><p>Returns the number of features per node in the dataset.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.processed_dir" class="name">var <span class="ident">processed_dir</span></p>
+
+
+
+
+    <div class="desc"><p>Function to return the processed directory path. Note that 'processed' is made in the call to process() if it does not exist</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.processed_file_names" class="name">var <span class="ident">processed_file_names</span></p>
+
+
+
+
+    <div class="desc"><p>Function to return the processed file names</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.processed_paths" class="name">var <span class="ident">processed_paths</span></p>
+
+
+
+
+    <div class="desc"><p>The absolute filepaths that must be present in order to skip
+processing.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.raw_dir" class="name">var <span class="ident">raw_dir</span></p>
+
+
+
+
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.raw_file_names" class="name">var <span class="ident">raw_file_names</span></p>
+
+
+
+
+    <div class="desc"><p>Function to return the raw file names</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="redxregressors.datasets.RedxCSVGraphMolDataSet.raw_paths" class="name">var <span class="ident">raw_paths</span></p>
+
+
+
+
+    <div class="desc"><p>The absolute filepaths that must be present in order to skip
+downloading.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+          <h3>Methods</h3>
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.copy">
+    <p>def <span class="ident">copy</span>(</p><p>self, idx: Union[slice, torch.Tensor, numpy.ndarray, collections.abc.Sequence, NoneType] = None)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Performs a deep-copy of the dataset. If :obj:<code>idx</code> is not given,
+will clone the full dataset. Otherwise, will only clone a subset of the
+dataset from indices :obj:<code>idx</code>.
+Indices can be slices, lists, tuples, and a :obj:<code>torch.Tensor</code> or
+:obj:<code>np.ndarray</code> of type long or bool.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.copy', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.copy" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">IndexType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;InMemoryDataset&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Performs a deep-copy of the dataset. If :obj:`idx` is not given,</span>
+<span class="sd">    will clone the full dataset. Otherwise, will only clone a subset of the</span>
+<span class="sd">    dataset from indices :obj:`idx`.</span>
+<span class="sd">    Indices can be slices, lists, tuples, and a :obj:`torch.Tensor` or</span>
+<span class="sd">    :obj:`np.ndarray` of type long or bool.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">idx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">data_list</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">()]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data_list</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="o">.</span><span class="n">indices</span><span class="p">()]</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">_indices</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">_data_list</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">slices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collate</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dataset</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.cpu">
+    <p>def <span class="ident">cpu</span>(</p><p>self, *args: str)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Moves the dataset to CPU memory.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.cpu', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.cpu" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cpu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;InMemoryDataset&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Moves the dataset to CPU memory.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.cuda">
+    <p>def <span class="ident">cuda</span>(</p><p>self, device: Union[int, str, NoneType] = None)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Moves the dataset toto CUDA memory.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.cuda', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.cuda" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cuda</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;InMemoryDataset&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Moves the dataset toto CUDA memory.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">device</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;cuda:</span><span class="si">{</span><span class="nb">int</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">elif</span> <span class="n">device</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda&#39;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.download">
+    <p>def <span class="ident">download</span>(</p><p>self)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Downloads the dataset to the :obj:<code>self.raw_dir</code> folder.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.download', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.download" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Downloads the dataset to the :obj:`self.raw_dir` folder.&quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.get">
+    <p>def <span class="ident">get</span>(</p><p>self, idx: int)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Gets the data object at index :obj:<code>idx</code>.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.get', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.get" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseData</span><span class="p">:</span>
+    <span class="c1"># TODO (matthias) Avoid unnecessary copy here.</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_data_list&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">*</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_list</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data_list</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">separate</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span>
+        <span class="n">batch</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span>
+        <span class="n">idx</span><span class="o">=</span><span class="n">idx</span><span class="p">,</span>
+        <span class="n">slice_dict</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">slices</span><span class="p">,</span>
+        <span class="n">decrement</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_data_list</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.get_summary">
+    <p>def <span class="ident">get_summary</span>(</p><p>self)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Collects summary statistics for the dataset.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.get_summary', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.get_summary" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Collects summary statistics for the dataset.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">torch_geometric.data.summary</span><span class="w"> </span><span class="kn">import</span> <span class="n">Summary</span>
+    <span class="k">return</span> <span class="n">Summary</span><span class="o">.</span><span class="n">from_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.index_select">
+    <p>def <span class="ident">index_select</span>(</p><p>self, idx: Union[slice, torch.Tensor, numpy.ndarray, collections.abc.Sequence])</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Creates a subset of the dataset from specified indices :obj:<code>idx</code>.
+Indices :obj:<code>idx</code> can be a slicing object, <em>e.g.</em>, :obj:<code>[2:5]</code>, a
+list, a tuple, or a :obj:<code>torch.Tensor</code> or :obj:<code>np.ndarray</code> of type
+long or bool.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.index_select', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.index_select" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">index_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="n">IndexType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Dataset&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Creates a subset of the dataset from specified indices :obj:`idx`.</span>
+<span class="sd">    Indices :obj:`idx` can be a slicing object, *e.g.*, :obj:`[2:5]`, a</span>
+<span class="sd">    list, a tuple, or a :obj:`torch.Tensor` or :obj:`np.ndarray` of type</span>
+<span class="sd">    long or bool.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
+        <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">step</span>
+        <span class="c1"># Allow floating-point slicing, e.g., dataset[:0.9]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">start</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stop</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">stop</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span> <span class="ow">and</span> <span class="n">idx</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span> <span class="ow">and</span> <span class="n">idx</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">bool</span><span class="p">:</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">as_tuple</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="n">idx</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="n">idx</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Only slices (&#39;:&#39;), list, tuples, torch.tensor and &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;np.ndarray of dtype long or bool are valid indices (got &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39;)&quot;</span><span class="p">)</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">_indices</span> <span class="o">=</span> <span class="n">indices</span>
+    <span class="k">return</span> <span class="n">dataset</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.indices">
+    <p>def <span class="ident">indices</span>(</p><p>self)</p>
+    </div>
+
+
+
+
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.indices', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.indices" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">indices</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">len</span><span class="p">())</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.len">
+    <p>def <span class="ident">len</span>(</p><p>self)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Returns the number of data objects stored in the dataset.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.len', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.len" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">slices</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">nested_iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slices</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.load">
+    <p>def <span class="ident">load</span>(</p><p>self, path: str, data_cls: Type[torch_geometric.data.data.BaseData] = &lt;class &#39;torch_geometric.data.data.Data&#39;&gt;)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Loads the dataset from the file path :obj:<code>path</code>.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.load', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.load" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data_cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseData</span><span class="p">]</span> <span class="o">=</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Loads the dataset from the file path :obj:`path`.&quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">torch_load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># Backward compatibility.</span>
+        <span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">slices</span> <span class="o">=</span> <span class="n">out</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">slices</span><span class="p">,</span> <span class="n">data_cls</span> <span class="o">=</span> <span class="n">out</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>  <span class="c1"># Backward compatibility.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data_cls</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.print_summary">
+    <p>def <span class="ident">print_summary</span>(</p><p>self, fmt: str = &#39;psql&#39;)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Prints summary statistics of the dataset to the console.</p>
+<p>Args:
+    fmt (str, optional): Summary tables format. Available table formats
+        can be found <code>here &lt;https://github.com/astanin/python-tabulate?
+        tab=readme-ov-file#table-format&gt;</code>__. (default: :obj:<code>"psql"</code>)</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.print_summary', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.print_summary" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;psql&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Prints summary statistics of the dataset to the console.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        fmt (str, optional): Summary tables format. Available table formats</span>
+<span class="sd">            can be found `here &lt;https://github.com/astanin/python-tabulate?</span>
+<span class="sd">            tab=readme-ov-file#table-format&gt;`__. (default: :obj:`&quot;psql&quot;`)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_summary</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="n">fmt</span><span class="p">))</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.process">
+    <p>def <span class="ident">process</span>(</p><p>self)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Function inherited from the base Dataset class to process the data and save it to disk for each graph entry
+In this case the function reads in the CSV file and converts the SMILES strings to PyTorch Geometric Data objects
+using the default from_smiles function. The target values are also added to the data object as a tensor. We
+can then use the pre_transform function to apply any transformations to the data object before saving it to disk. In the
+present example this is used to extract the smiles from the default data object gotten from the from_smiles function and
+passes these to the new featurization function for the AttentiveFP model. The data object is then saved to disk.</p>
+<p>Note that providing no pre_transform function will result in the default data object being saved to disk and to get a modified
+graph data object for each molecule we can provide a pre_transform function that modifies the data object before saving it to disk.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.process', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.process" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function inherited from the base Dataset class to process the data and save it to disk for each graph entry</span>
+<span class="sd">    In this case the function reads in the CSV file and converts the SMILES strings to PyTorch Geometric Data objects</span>
+<span class="sd">    using the default from_smiles function. The target values are also added to the data object as a tensor. We</span>
+<span class="sd">    can then use the pre_transform function to apply any transformations to the data object before saving it to disk. In the</span>
+<span class="sd">    present example this is used to extract the smiles from the default data object gotten from the from_smiles function and</span>
+<span class="sd">    passes these to the new featurization function for the AttentiveFP model. The data object is then saved to disk.</span>
+<span class="sd">    Note that providing no pre_transform function will result in the default data object being saved to disk and to get a modified</span>
+<span class="sd">    graph data object for each molecule we can provide a pre_transform function that modifies the data object before saving it to disk.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># check if we have a single csv file to load from disk or a list of csv files to load and concatenate</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csv_file</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;csv_file must be a string, pandas dataframe or a list of strings&quot;</span>
+        <span class="p">)</span>
+    <span class="c1"># drop any rows with missing values in the SMILES or target columns</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">smiles_column</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">property_columns</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># get the SMILES strings and target values from the data</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data columns are as follows: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">smiles</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">smiles_column</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">property_columns</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span>
+    <span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Properties targets are as follows: </span><span class="si">{</span><span class="n">properties</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># get the IDs if they are present in the data</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">id_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ids</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">id_column</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ids</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="c1"># create a list to store the data objects</span>
+    <span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># loop over the SMILES strings and target values and create a PyTorch Geometric Data object for each</span>
+    <span class="k">for</span> <span class="n">ith</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">smiles</span><span class="p">))):</span>
+        <span class="c1"># validate the SMILES string</span>
+        <span class="n">smi</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">validate_smile</span><span class="p">(</span><span class="n">smiles</span><span class="p">[</span><span class="n">ith</span><span class="p">])</span>
+        <span class="c1"># create the PyTorch Geometric Data object</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">ml_featurization</span><span class="o">.</span><span class="n">from_smiles_without_default_graph_feature_gen</span><span class="p">(</span>
+            <span class="n">smi</span>
+        <span class="p">)</span>  <span class="c1"># avoid needless default featurization from_smiles(smi). We use from_smiles() as the defualt pre_transform.</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">properties</span><span class="p">[:,</span> <span class="n">ith</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+        <span class="c1"># check if the data object is empty and skip if it is</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">num_edges</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">data</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Skipping molecule </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ids</span><span class="p">[</span><span class="n">ith</span><span class="p">]</span><span class="si">}</span><span class="s2"> graph featureization failed&quot;</span>
+            <span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input smiles: &#39;</span><span class="si">{</span><span class="n">smiles</span><span class="p">[</span><span class="n">ith</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; validated smiles &#39;</span><span class="si">{</span><span class="n">smi</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="c1"># apply the pre_transform function to the data object if we want graph featurization that is different from the pytorch geometric default for smiles</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="c1"># append the data object to the list</span>
+        <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="c1"># save the data objects to disk</span>
+    <span class="n">processed_dir_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">processed_dir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">processed_dir</span><span class="p">):</span>
+        <span class="n">processed_dir_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">data_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">processed_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.shuffle">
+    <p>def <span class="ident">shuffle</span>(</p><p>self, return_perm: bool = False)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Randomly shuffles the examples in the dataset.</p>
+<p>Args:
+    return_perm (bool, optional): If set to :obj:<code>True</code>, will also
+        return the random permutation used to shuffle the dataset.
+        (default: :obj:<code>False</code>)</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.shuffle', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.shuffle" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">shuffle</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">return_perm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Dataset&#39;</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="s1">&#39;Dataset&#39;</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Randomly shuffles the examples in the dataset.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        return_perm (bool, optional): If set to :obj:`True`, will also</span>
+<span class="sd">            return the random permutation used to shuffle the dataset.</span>
+<span class="sd">            (default: :obj:`False`)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">perm</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randperm</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">perm</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">perm</span><span class="p">)</span> <span class="k">if</span> <span class="n">return_perm</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="n">dataset</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.to">
+    <p>def <span class="ident">to</span>(</p><p>self, device: Union[int, str])</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Performs device conversion of the whole dataset.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.to', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.to" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s1">&#39;InMemoryDataset&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Performs device conversion of the whole dataset.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The given &#39;InMemoryDataset&#39; only references a &quot;</span>
+                         <span class="s2">&quot;subset of examples of the full dataset&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The data of the dataset is already cached&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.to_datapipe">
+    <p>def <span class="ident">to_datapipe</span>(</p><p>self)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Converts the dataset into a :class:<code>torch.utils.data.DataPipe</code>.</p>
+<p>The returned instance can then be used with :pyg:<code>PyG's</code> built-in
+:class:<code>DataPipes</code> for baching graphs as follows:</p>
+<p>.. code-block:: python</p>
+<pre><code>from torch_geometric.datasets import QM9
+
+dp = QM9(root='./data/QM9/').to_datapipe()
+dp = dp.batch_graphs(batch_size=2, drop_last=True)
+
+for batch in dp:
+    pass
+</code></pre>
+<p>See the <code>PyTorch tutorial
+&lt;https://pytorch.org/data/main/tutorial.html&gt;</code>_ for further background
+on DataPipes.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.to_datapipe', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.to_datapipe" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">to_datapipe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Converts the dataset into a :class:`torch.utils.data.DataPipe`.</span>
+<span class="sd">    The returned instance can then be used with :pyg:`PyG&#39;s` built-in</span>
+<span class="sd">    :class:`DataPipes` for baching graphs as follows:</span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        from torch_geometric.datasets import QM9</span>
+<span class="sd">        dp = QM9(root=&#39;./data/QM9/&#39;).to_datapipe()</span>
+<span class="sd">        dp = dp.batch_graphs(batch_size=2, drop_last=True)</span>
+<span class="sd">        for batch in dp:</span>
+<span class="sd">            pass</span>
+<span class="sd">    See the `PyTorch tutorial</span>
+<span class="sd">    &lt;https://pytorch.org/data/main/tutorial.html&gt;`_ for further background</span>
+<span class="sd">    on DataPipes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">torch_geometric.data.datapipes</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatasetAdapter</span>
+    <span class="k">return</span> <span class="n">DatasetAdapter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  <div class="item">
+    <div class="name def" id="redxregressors.datasets.RedxCSVGraphMolDataSet.to_on_disk_dataset">
+    <p>def <span class="ident">to_on_disk_dataset</span>(</p><p>self, root: Optional[str] = None, backend: str = &#39;sqlite&#39;, log: bool = True)</p>
+    </div>
+
+
+
+
+    <div class="desc"><p>Converts the :class:<code>InMemoryDataset</code> to a :class:<code>OnDiskDataset</code>
+variant. Useful for distributed training and hardware instances with
+limited amount of shared memory.</p>
+<p>root (str, optional): Root directory where the dataset should be saved.
+    If set to :obj:<code>None</code>, will save the dataset in
+    :obj:<code>root/on_disk</code>.
+    Note that it is important to specify :obj:<code>root</code> to account for
+    different dataset splits. (optional: :obj:<code>None</code>)
+backend (str): The :class:<code>Database</code> backend to use.
+    (default: :obj:<code>"sqlite"</code>)
+log (bool, optional): Whether to print any console output while
+    processing the dataset. (default: :obj:<code>True</code>)</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-redxregressors.datasets.RedxCSVGraphMolDataSet.to_on_disk_dataset', this);">Show source &equiv;</a></p>
+  <div id="source-redxregressors.datasets.RedxCSVGraphMolDataSet.to_on_disk_dataset" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">to_on_disk_dataset</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;sqlite&#39;</span><span class="p">,</span>
+    <span class="n">log</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;torch_geometric.data.OnDiskDataset&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Converts the :class:`InMemoryDataset` to a :class:`OnDiskDataset`</span>
+<span class="sd">    variant. Useful for distributed training and hardware instances with</span>
+<span class="sd">    limited amount of shared memory.</span>
+<span class="sd">    root (str, optional): Root directory where the dataset should be saved.</span>
+<span class="sd">        If set to :obj:`None`, will save the dataset in</span>
+<span class="sd">        :obj:`root/on_disk`.</span>
+<span class="sd">        Note that it is important to specify :obj:`root` to account for</span>
+<span class="sd">        different dataset splits. (optional: :obj:`None`)</span>
+<span class="sd">    backend (str): The :class:`Database` backend to use.</span>
+<span class="sd">        (default: :obj:`&quot;sqlite&quot;`)</span>
+<span class="sd">    log (bool, optional): Whether to print any console output while</span>
+<span class="sd">        processing the dataset. (default: :obj:`True`)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">osp</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The root directory of &quot;</span>
+                         <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39; is not specified. &quot;</span>
+                         <span class="sa">f</span><span class="s2">&quot;Please pass in &#39;root&#39; when creating on-disk &quot;</span>
+                         <span class="sa">f</span><span class="s2">&quot;datasets from it.&quot;</span><span class="p">)</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">root</span> <span class="ow">or</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;on_disk&#39;</span><span class="p">)</span>
+    <span class="n">in_memory_dataset</span> <span class="o">=</span> <span class="bp">self</span>
+    <span class="n">ref_data</span> <span class="o">=</span> <span class="n">in_memory_dataset</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ref_data</span><span class="p">,</span> <span class="n">Data</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;`</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">.to_on_disk_dataset()` is &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;currently only supported on homogeneous graphs&quot;</span><span class="p">)</span>
+    <span class="c1"># Parse the schema ====================================================</span>
+    <span class="n">schema</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">ref_data</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+            <span class="n">schema</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="vm">__class__</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span> <span class="ow">and</span> <span class="n">value</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">schema</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+            <span class="n">size</span><span class="p">[</span><span class="n">ref_data</span><span class="o">.</span><span class="n">__cat_dim__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="n">schema</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">size</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">schema</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">object</span>
+    <span class="c1"># Create the on-disk dataset ==========================================</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">OnDiskDataset</span><span class="p">(</span><span class="n">torch_geometric</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">OnDiskDataset</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+                <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span>
+                <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
+                <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">_iter</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">in_memory_dataset</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">in_memory_dataset</span><span class="o">.</span><span class="n">indices</span><span class="p">()</span>
+            <span class="p">]</span>
+            <span class="k">if</span> <span class="n">log</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="n">_iter</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">_iter</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Converting to OnDiskDataset&#39;</span><span class="p">)</span>
+            <span class="n">data_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Data</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">_iter</span><span class="p">):</span>
+                <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">in_memory_dataset</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
+                    <span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">deserialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Data</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="n">arg_repr</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">return</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;OnDisk</span><span class="si">{</span><span class="n">in_memory_dataset</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">(&#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">arg_repr</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">OnDiskDataset</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">in_memory_dataset</span><span class="o">.</span><span class="n">transform</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+
+      </div>
+      </div>
+
+  </section>
+</article>
+  <div class="clear"> </div>
+  <footer id="footer">
+    <p>
+      Generated by <a href="https://github.com/timothycrosley/pdocs">pdocs 1.2.0</a>
+    </p>
+  </footer>
+</div>
+</body>
+</html>
