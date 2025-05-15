@@ -10,6 +10,7 @@ name = "redxregressors"
 version = "0.0.1"
 license = {file = "LICENSE"}
 authors = [
+    {name = "Redx Pharma Team"},
     {name = "James L. McDonagh"},
 ]
 description = "This repository contains a library for building and optimizing regression models and notebooks for the use of the library"

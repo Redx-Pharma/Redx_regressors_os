@@ -61,6 +61,11 @@ pip install .
 ## Help/FAQ
 
 
-## Authors
+## Contributions
+Authors:
+* Redx Pharma Team
 
-James L. McDonagh
+Notable contributions
+* S. Yung
+* A. Haworth
+* J. McDonagh
